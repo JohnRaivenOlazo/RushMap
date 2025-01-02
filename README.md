@@ -6,7 +6,7 @@
 
 ### **About The Project**
 
-**Pedestrian Rush Hour Tracker** is a web-based application designed to provide real-time insights into pedestrian congestion, helping individuals avoid crowded areas during peak traffic times. The app leverages real-time traffic data to estimate pedestrian density, offering users a simple, intuitive interface to visualize high-traffic zones and find the quickest paths to their destinations. This tool is perfect for those who want to navigate the city efficiently and avoid the stress of crowded streets during rush hour.
+**RushMap** is a web-based application designed to provide real-time insights into pedestrian congestion, helping individuals avoid crowded areas during peak traffic times. The app leverages real-time traffic data to estimate pedestrian density, offering users a simple, intuitive interface to visualize high-traffic zones and find the quickest paths to their destinations. This tool is perfect for those who want to navigate the city efficiently and avoid the stress of crowded streets during rush hour.
 
 ---
 

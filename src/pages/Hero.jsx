@@ -1,5 +1,5 @@
 import React from "react";
-import Typewriter from "typewriter-effect";
+import Typewriter from "@/components/Typewriter";
 
 const Hero = (props) => {
     const { session, router } = props;
@@ -16,19 +16,17 @@ const Hero = (props) => {
           />
         </p>
         <p className="text-lg font-medium mb-4">
-          <Typewriter
-            options={{
-              strings: [
-                "Navigate rush hour with ease.",
-                "Designed to guide you wherever you go.",
-                "Built for students, professionals, and daily commuters.",
-                "Minimal design, maximum efficiency.",
-              ],
-              autoStart: true,
-              loop: true,
-              delay: 50,
-              deleteSpeed: 0,
-            }}
+        <Typewriter
+            strings={[
+              "Navigate rush hour with ease.",
+              "Designed to guide you wherever you go.",
+              "Built for students, professionals, and daily commuters.",
+              "Minimal design, maximum efficiency.",
+            ]}
+            autoStart={true}
+            loop={true}
+            delay={50}
+            deleteSpeed={30}
           />
         </p>
         <p className="text-lg font-light max-w-2xl mx-auto mb-20 text-light">

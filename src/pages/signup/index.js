@@ -30,8 +30,9 @@ const SignUp = () => {
       if (signupError) {
         setError(signupError.message);
       } else {
+        // Sign Up successful, inform the user
         alert("Sign Up Successful. Please check your email for confirmation.");
-        router.push("/login");
+        router.push("/login"); // Redirect to login after successful sign up
       }
     } catch (error) {
       setError("An error occurred while trying to sign up");
@@ -121,4 +122,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp
+export default SignUp;

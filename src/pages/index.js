@@ -40,7 +40,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar session={session} handleLogout={handleLogout} />
+      <Navbar session={session} handleLogout={handleLogout} router={router} />
       <Hero session={session} router={router} />
       <About />
       <Features />

@@ -26,13 +26,13 @@ const Navbar = (props) => {
         <div className="flex space-x-3">
           <button
             onClick={() => router.push('/login')}
-            className="bg-transparent text-white py-1 px-3 rounded-md text-sm font-semibold hover:bg-white hover:text-black transition-all duration-300 ease"
+            className="bg-transparent text-light py-1 px-3 rounded-md text-sm font-semibold hover:text-white transition-all duration-300 ease"
           >
             Login
           </button>
           <button
             onClick={() => router.push('/signup')}
-            className="bg-gradient-to-r from-[#00c6ff] to-[#0072ff] text-white py-1 px-5 rounded-md text-sm font-semibold hover:scale-105 transition-all duration-300 ease"
+            className="bg-gradient-to-r from-[#00c6ff] to-[#0072ff] text-white py-1 px-5 rounded-md text-sm font-semibold hover:opacity-85 transition-all duration-300 ease"
           >
             Sign Up
           </button>

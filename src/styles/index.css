@@ -5,12 +5,49 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --lg-main-bg: #031716; /* Large main background */
+  --lg-accent-bg: #032F30; /* Large accent background */
+  --primary: #0A7075; /* Primary color */
+  --primary-accent: #0C969C; /* Primary accent */
+  --secondary: #6BA3BE; /* Secondary color */
+  --secondary-accent: #274D60; /* Secondary accent */
 }
 
+
 body {
-  color: var(--foreground);
-  background: var(--background);
+  background: #000;
   font-family: 'Clash Grotesk', sans-serif;
 }
+
+
+/*Hero*/
+.custom-shape-divider-bottom {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+}
+
+#bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.custom-shape-divider-bottom svg {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 800px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom .shape-fill {
+  fill: linear-gradient(to bottom, var(--primary-accent), var(--primary));
+}
+

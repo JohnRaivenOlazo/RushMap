@@ -1,33 +1,40 @@
-// pages/signup.js
-import { useState } from 'react';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const response = await fetch('/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const { user, error: signupError } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: { display_name: username }, // Save username as display_name during signup
         },
-        body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert('Sign Up Successful');
+      if (signupError) {
+        setError(signupError.message);
       } else {
-        setError(data.error || 'An error occurred');
+        alert("Sign Up Successful. Please check your email for confirmation.");
+        router.push("/login");
       }
     } catch (error) {
-      setError('An error occurred while trying to authenticate');
+      setError("An error occurred while trying to sign up");
     }
   };
 
@@ -38,7 +45,30 @@ const SignUp = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              required
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -51,7 +81,12 @@ const SignUp = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -75,7 +110,7 @@ const SignUp = () => {
 
         <div className="mt-4 text-center">
           <button
-            onClick={() => window.location.href = '/login'}
+            onClick={() => router.push("/login")}
             className="text-blue-500 hover:text-blue-700"
           >
             Already have an account? Login
@@ -86,4 +121,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignUp

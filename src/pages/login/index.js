@@ -1,33 +1,36 @@
-// pages/login.js
-import { useState } from 'react';
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert('Login Successful');
+      if (error) {
+        setError(error.message);
       } else {
-        setError(data.error || 'An error occurred');
+        alert("Login Successful");
+        router.push("/");
       }
     } catch (error) {
-      setError('An error occurred while trying to authenticate');
+      setError("An error occurred while trying to login...");
     }
   };
 
@@ -38,7 +41,12 @@ const Login = () => {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -51,7 +59,12 @@ const Login = () => {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
             <input
               type="password"
               id="password"
@@ -75,7 +88,7 @@ const Login = () => {
 
         <div className="mt-4 text-center">
           <button
-            onClick={() => window.location.href = '/signup'}
+            onClick={() => router.push("/signup")}
             className="text-blue-500 hover:text-blue-700"
           >
             Don't have an account? Sign Up
@@ -86,4 +99,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Login

@@ -34,7 +34,7 @@ const Typewriter = ({ strings, autoStart = true, loop = true, delay = 50, delete
   }, [displayedText, isDeleting, currentIndex, strings, delay, deleteSpeed, autoStart]);
 
   return (
-    <span style={{ display: "inline-block", minWidth: `${maxStringLength}ch` }}>
+    <span className="inline-block">
       {displayedText}
     </span>
   );

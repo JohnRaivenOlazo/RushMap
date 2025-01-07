@@ -52,3 +52,9 @@ body {
   fill: #000;
 }
 
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+

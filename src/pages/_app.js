@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Navbar session={session} handleLogout={handleLogout} router={router} />
-      <Component {...pageProps} session={session} />
+      <Component {...pageProps} session={session} router={router} />
     </>
   );
 }

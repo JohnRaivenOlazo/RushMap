@@ -4,7 +4,7 @@ import Typewriter from "@/components/Typewriter";
 const Hero = ({session, router}) => {
 
   return (
-    <section className="h-screen flex justify-start items-center text-white relative">
+    <section className="h-screen flex justify-start items-center text-white relative overflow-hidden">
       <div className="relative z-50 mx-6 lg:mx-12 -mt-28 lg:mt-0">
         <p className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter text-shadow-xl align-middle">
           RushMap{" "}

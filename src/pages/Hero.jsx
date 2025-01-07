@@ -1,8 +1,7 @@
 import React from "react";
 import Typewriter from "@/components/Typewriter";
 
-const Hero = (props) => {
-  const { session, router } = props;
+const Hero = ({session, router}) => {
 
   return (
     <section className="h-screen flex justify-start items-center text-white relative">

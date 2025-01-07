@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createClient } from "@supabase/supabase-js";
 
@@ -7,15 +7,26 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
-const Login = () => {
+const Login = ({ session }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
 
+  useEffect(() => {
+    const checkUserSession = async () => {
+      if (session) {
+        alert("You are already logged in");
+        router.push("/");
+      }
+    };
+    checkUserSession();
+  }, []);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({

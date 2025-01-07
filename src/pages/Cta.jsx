@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const Cta = () => {
+const Cta = ({ router }) => {
   return (
     <motion.section
       className="h-screen flex flex-col justify-center items-center bg-black text-white"
